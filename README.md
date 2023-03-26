@@ -1,38 +1,103 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ShareMarket
+## About the Project
+ShareMarket is a social media platform that allows users to share and discover items with others. Users can create profiles, post items, and view and comment on items posted by other users.
 
-## Getting Started
+## Installation
+To install ShareMarket, follow these steps:
 
-First, run the development server:
+1. Clone the repository to your local machine:
+`git clone https://github.com/Vtewari2311/Share-Market.git`
+
+2. Install dependencies in both the root directory and the client directory:
+* > cd Share-Market
+
+* > npm install
+
+* > cd client
+
+* > npm install
+
+3. Create a .env file in the root directory with the following variables:
+* `MONGODB_URI=<your-mongodb-uri>`
+* `SESSION_SECRET=<your-session-secret>`
+
+4. Start the application:
+`npm start`
+
+## Usage
+To use ShareCrate, simply navigate to http://localhost:5000 in your web browser. From there, you can create a profile, post items, and view and comment on items posted by other users.
+
+## Project Directory:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+.
+├── node_modules/
+├── public/
+│   ├── index.html
+│   ├── index.css
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   ├── Header.jsx
+│   │   ├── ItemCard.jsx
+│   │   ├── ItemForm.jsx
+│   │   ├── ItemList.jsx
+│   │   ├── Login.jsx
+│   │   ├── MessageForm.jsx
+│   │   ├── MessageList.jsx
+│   │   └── Signup.jsx
+│   ├── services/
+│   │   ├── auth.js
+│   │   ├── items.js
+│   │   └── messages.js
+│   ├── App.jsx
+│   ├── index.js
+│   └── utils/
+│       └── api.js
+├── server/
+│   ├── controllers/
+│   │   ├── auth.js
+│   │   ├── items.js
+│   │   └── messages.js
+│   ├── models/
+│   │   ├── Item.js
+│   │   ├── Message.js
+│   │   └── User.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   ├── items.js
+│   │   └── messages.js
+│   ├── utils/
+│   │   └── database.js
+│   └── app.js
+├── .env
+├── .gitignore
+├── package.json
+└── README.md
+
 ```
 
-Open [http://localhost:5000](http://localhost:3000) with your browser to see the result.
+Contributing
+We welcome contributions to ShareCrate! To get started, follow these steps:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Fork the repository to your own GitHub account.
+2. Clone the repository to your local machine:
+git clone `https://github.com/Vtewari2311/Share-Market.git`
+3. Install dependencies in both the root directory and the client directory:
+* `cd Share-Market`
+* `npm install`
+* `cd client`
+* `npm install`
+4. Create a new branch for your changes:
+> git checkout -b my-new-feature
+5. Make your changes and commit them:
+> git commit -am 'Add some feature'
+6. Push your changes to your fork:
+> git push origin my-new-feature
+7. Create a new pull request from your fork to the main branch of the original repository.
+Please make sure your code is well-tested and follows our coding standards before submitting a pull request. We also ask that you include a detailed description of your changes in your pull request, along with any necessary documentation updates.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:5000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
