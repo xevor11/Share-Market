@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema({
@@ -68,4 +67,3 @@ const goalSchema = mongoose.Schema({
 })
 
 module.exports = mongoose.model('Goal', goalSchema)
->>>>>>> d7d2359dd265452b87910aaa939cd2f8162732ff
