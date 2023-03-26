@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
@@ -27,3 +28,32 @@ userSchema.methods.isValidPassword = async function (password) {
 };
 
 module.exports = mongoose.model('User', userSchema);
+=======
+const mongoose = require('mongoose')
+
+const userSchema = mongoose.Schema({
+    name:{
+        type:String,
+        required: [true, 'Please add a name']
+    },
+
+    email:{
+        type:String,
+        required: [true, 'Please add a email'],
+        unique:true
+    },
+
+    password:{
+        type:String,
+        required: [true, 'Please add a password']
+    },
+
+    
+
+    
+}, {
+    timestamps: true,
+})
+
+module.exports = mongoose.model('User', userSchema)
+>>>>>>> d7d2359dd265452b87910aaa939cd2f8162732ff

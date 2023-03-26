@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema({
@@ -35,3 +36,36 @@ const itemSchema = new mongoose.Schema({
 const Item = mongoose.model('Item', itemSchema);
 
 module.exports = Item;
+=======
+const mongoose = require('mongoose')
+
+const goalSchema = mongoose.Schema({
+   title:{
+
+        user:{
+            type:mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref:'User'
+        },
+        type:String,
+        required: [true, 'Please add a text value']
+    },
+
+    description:{
+
+        user:{
+            type:mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref:'User'
+        },
+        type:String,
+        required: [true, 'Please add a text value']
+    }
+
+    
+}, {
+    timestamps: true,
+})
+
+module.exports = mongoose.model('Goal', goalSchema)
+>>>>>>> d7d2359dd265452b87910aaa939cd2f8162732ff
