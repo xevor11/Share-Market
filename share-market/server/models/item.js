@@ -35,7 +35,6 @@ const itemSchema = new mongoose.Schema({
 const Item = mongoose.model('Item', itemSchema);
 
 module.exports = Item;
-=======
 const mongoose = require('mongoose')
 
 const goalSchema = mongoose.Schema({

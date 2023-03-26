@@ -54,4 +54,3 @@ const userSchema = mongoose.Schema({
 })
 
 module.exports = mongoose.model('User', userSchema)
->>>>>>> d7d2359dd265452b87910aaa939cd2f8162732ff
