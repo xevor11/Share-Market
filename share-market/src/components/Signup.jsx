@@ -3,71 +3,121 @@ import { useHistory } from 'react-router-dom';
 import { signUp } from '../services/auth';
 
 const SignUp = () => {
+  const history = useHistory();
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
+    confirmPassword: ''
   });
-  const [error, setError] = useState(null);
-  const history = useHistory();
+  const [formErrors, setFormErrors] = useState([]);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const handleInputChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    const errors = validateForm();
+    if (errors.length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
     try {
       await signUp(formData);
-      history.push('/');
+      history.push('/login');
     } catch (error) {
-      setError(error.message);
+      console.error(error);
+      setFormErrors(['An error occurred. Please try again later.']);
     }
+  };
+
+  const validateForm = () => {
+    const errors = [];
+
+    if (!formData.name) {
+      errors.push('Name is required.');
+    }
+
+    if (!formData.email) {
+      errors.push('Email is required.');
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.push('Email is invalid.');
+    }
+
+    if (!formData.password) {
+      errors.push('Password is required.');
+    } else if (formData.password.length < 6) {
+      errors.push('Password must be at least 6 characters.');
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      errors.push('Passwords do not match.');
+    }
+
+    return errors;
   };
 
   return (
     <div>
-      <h2>Sign Up</h2>
-      {error && <div className="error">{error}</div>}
+      <h1>Sign Up</h1>
+      {formErrors.length > 0 && (
+        <div className="alert alert-danger" role="alert">
+          {formErrors.map((error, i) => (
+            <div key={i}>{error}</div>
+          ))}
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
+            className="form-control"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
           />
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
+        <div className="form-group">
+          <label htmlFor="email">Email address:</label>
           <input
             type="email"
+            className="form-control"
             id="email"
             name="email"
             value={formData.email}
-            onChange={handleChange}
-            required
+            onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="password">Password:</label>
           <input
             type="password"
+            className="form-control"
             id="password"
             name="password"
             value={formData.password}
-            onChange={handleChange}
-            required
+            onChange={handleInputChange}
           />
         </div>
-        <button type="submit">Sign Up</button>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            className="form-control"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Sign Up
+        </button>
       </form>
     </div>
   );
